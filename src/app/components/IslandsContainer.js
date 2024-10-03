@@ -19,8 +19,8 @@ function IslandsContainer({ islandsData }) {
     setQuery(e.target.value)
   }
 
-  function addVisitor(island) {
-    island.visitors++
+  function addVisitor(island, visitor) {
+    island.visitors = [...island.visitors, visitor]
     setIslands([...islands])
   }
 
@@ -33,7 +33,7 @@ function IslandsContainer({ islandsData }) {
         <Search handleChange={handleChange} />
         <IslandList islands={fitleredIslands} handleSelectIsland={handleSelectIsland} />
       </div>
-      <IslandForm island={currentIsland} addVisitor={() => addVisitor(currentIsland)} />
+      <IslandForm island={currentIsland} addVisitor={addVisitor} />
     </div>
   )
 }

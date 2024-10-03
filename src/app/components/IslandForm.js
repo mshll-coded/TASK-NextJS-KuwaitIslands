@@ -4,23 +4,23 @@ import Image from "next/image";
 import { useState } from "react";
 
 function IslandForm({ island, addVisitor }) {
-  const [booking, setBooking] = useState({
+  const [visitor, setVisitor] = useState({
     name: "",
     phone: ""
   })
 
   function handleChange(e) {
-    setBooking({ ...booking, [e.target.name]: e.target.value })
+    setVisitor({ ...visitor, [e.target.name]: e.target.value })
   }
 
-  function handleBooking(e) {
+  function handlevisitor(e) {
     e.preventDefault()
 
-    const confirmation = confirm(`Are you sure you want to book the island ${island.name} with the name: ${booking.name} and phone: ${booking.phone}`)
+    const confirmation = confirm(`Are you sure you want to book the island ${island.name} with the name: ${visitor.name} and phone: ${visitor.phone}`)
 
     if (confirmation) {
-      addVisitor()
-      setBooking({ name: "", phone: "" })
+      addVisitor(island, visitor)
+      setVisitor({ name: "", phone: "" })
     }
   }
 
@@ -34,17 +34,17 @@ function IslandForm({ island, addVisitor }) {
         height="300"
       />
       <h3>Book a trip to {island.name} island</h3>
-      <form onSubmit={handleBooking}>
+      <form onSubmit={handlevisitor}>
         <input
           name="name"
           onChange={handleChange}
-          value={booking.name}
+          value={visitor.name}
           placeholder="Full Name"
         />
         <input
           name="phone"
           onChange={handleChange}
-          value={booking.phone}
+          value={visitor.phone}
           type="tel"
           pattern="[0-9]{8}"
           title="8 digit phone number"
