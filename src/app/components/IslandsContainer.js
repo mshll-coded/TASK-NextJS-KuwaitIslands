@@ -8,6 +8,11 @@ import Search from './Search'
 
 function IslandsContainer({ islands }) {
   const [query, setQuery] = useState("");
+  const [currentIsland, setCurrentIsland] = useState(islands[0])
+
+  function handleSelectIsland(island) {
+    setCurrentIsland(island)
+  }
 
   function handleChange(e) {
     setQuery(e.target.value)
@@ -20,9 +25,9 @@ function IslandsContainer({ islands }) {
     <div className="islands-container">
       <div>
         <Search handleChange={handleChange} />
-        <IslandList islands={fitleredIslands} />
+        <IslandList islands={fitleredIslands} handleSelectIsland={handleSelectIsland} />
       </div>
-      <IslandForm island={islands[0]} />
+      <IslandForm island={currentIsland} />
     </div>
   )
 }
