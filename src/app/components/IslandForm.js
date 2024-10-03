@@ -14,8 +14,12 @@ function IslandForm({ island }) {
       />
       <h3>Book a trip to {island.name} island</h3>
       <form onSubmit={() => { }}>
-        <input placeholder="Type Full Name" />
-        <input placeholder="Type Phone Number" />
+        <input placeholder="Full Name" />
+        <input
+          type="tel"
+          pattern="[0-9]{8}"
+          title="8 digit phone number"
+          placeholder="Phone Number" />
         <button type="submit" className="book">
           Book for today!
         </button>
