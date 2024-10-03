@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-function IslandForm({ island }) {
+function IslandForm({ island, addVisitor }) {
   const [booking, setBooking] = useState({
     name: "",
     phone: ""
@@ -19,6 +19,7 @@ function IslandForm({ island }) {
     const confirmation = confirm(`Are you sure you want to book the island ${island.name} with the name: ${booking.name} and phone: ${booking.phone}`)
 
     if (confirmation) {
+      addVisitor()
       setBooking({ name: "", phone: "" })
     }
   }

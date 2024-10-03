@@ -6,9 +6,10 @@ import IslandForm from './IslandForm'
 import IslandList from './IslandList'
 import Search from './Search'
 
-function IslandsContainer({ islands }) {
+function IslandsContainer({ islandsData }) {
   const [query, setQuery] = useState("");
-  const [currentIsland, setCurrentIsland] = useState(islands[0])
+  const [currentIsland, setCurrentIsland] = useState(islandsData[0])
+  const [islands, setIslands] = useState(islandsData)
 
   function handleSelectIsland(island) {
     setCurrentIsland(island)
@@ -16,6 +17,11 @@ function IslandsContainer({ islands }) {
 
   function handleChange(e) {
     setQuery(e.target.value)
+  }
+
+  function addVisitor(island) {
+    island.visitors++
+    setIslands([...islands])
   }
 
   const fitleredIslands = islands
@@ -27,7 +33,7 @@ function IslandsContainer({ islands }) {
         <Search handleChange={handleChange} />
         <IslandList islands={fitleredIslands} handleSelectIsland={handleSelectIsland} />
       </div>
-      <IslandForm island={currentIsland} />
+      <IslandForm island={currentIsland} addVisitor={() => addVisitor(currentIsland)} />
     </div>
   )
 }

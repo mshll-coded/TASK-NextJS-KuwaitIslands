@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <IslandsContainer islands={islands} />
+      <IslandsContainer islandsData={islands} />
     </>
   );
 }

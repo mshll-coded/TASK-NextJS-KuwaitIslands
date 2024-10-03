@@ -6,7 +6,7 @@ function Island({ island, selectIsland }) {
     <div onClick={selectIsland} className="Island">
       <h3>{island.name}</h3>
       {/* YOU HAVE TO CHANGE THE VISITORS COUNT */}
-      <p>Visitors 0</p>
+      <p>Visitors {island.visitors}</p>
       <Image
         src={island.img}
         alt={island.name}
