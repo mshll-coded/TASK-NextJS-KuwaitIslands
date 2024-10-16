@@ -19,8 +19,10 @@ function IslandsContainer({ islands }) {
     setCurrentIsland(island);
   }
 
-  function incCurrentIslandVisitors(island) {
-    setCurrentIslandVisitors(++island.visitors);
+  function incCurrentIslandVisitors(island, name, phone) {
+    island.visitors.push({ name: name, phone: phone });
+    setCurrentIslandVisitors(island.visitors.length);
+    console.log(island.visitors);
   }
 
   const fitleredIslands = islands.filter((island) => island.name.toLowerCase().includes(query.toLowerCase()));
