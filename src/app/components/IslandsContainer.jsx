@@ -16,6 +16,7 @@ function IslandsContainer({ islands }) {
   }
 
   function handleCurrentIsland(island) {
+    setCurrentIslandVisitors(island.visitors.length);
     setCurrentIsland(island);
   }
 
