@@ -9,6 +9,7 @@ import Search from './Search';
 function IslandsContainer({ islands }) {
   const [query, setQuery] = useState('');
   const [currentIsland, setCurrentIsland] = useState(islands[1]);
+  const [currentIslandVisitors, setCurrentIslandVisitors] = useState(0);
 
   function handleChange(e) {
     setQuery(e.target.value);
@@ -18,15 +19,24 @@ function IslandsContainer({ islands }) {
     setCurrentIsland(island);
   }
 
+  function incCurrentIslandVisitors(island) {
+    setCurrentIslandVisitors(++island.visitors);
+  }
+
   const fitleredIslands = islands.filter((island) => island.name.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <div className="islands-container">
       <div>
         <Search handleChange={handleChange} />
-        <IslandList islands={fitleredIslands} handleCurrentIsland={handleCurrentIsland} />
+        <IslandList
+          islands={fitleredIslands}
+          handleCurrentIsland={handleCurrentIsland}
+          currentIsland={currentIsland}
+          currentIslandVisitors={currentIslandVisitors}
+        />
       </div>
-      <IslandForm island={currentIsland} />
+      <IslandForm island={currentIsland} incCurrentIslandVisitors={incCurrentIslandVisitors} />
     </div>
   );
 }

@@ -2,11 +2,12 @@
 
 import Image from 'next/image';
 
-function IslandForm({ island }) {
+function IslandForm({ island, incCurrentIslandVisitors }) {
   const handleForm = () => {
     event.preventDefault();
     if (window.confirm(`Are you sure you want to book ${island.name}?`)) {
       event.target.reset();
+      incCurrentIslandVisitors(island);
     }
   };
 
